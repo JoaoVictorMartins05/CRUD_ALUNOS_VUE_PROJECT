@@ -1,16 +1,28 @@
 <template>
   <div id="app">
-    <alunos />
+    <Nav />
+    <div class="marginPrincipal">
+      <router-view :key="$route.fullPath"></router-view>
+      <!-- <alunos /> -->
+      <!-- <professor /> -->
+      <!-- <sobre /> -->
+    </div>
   </div>
 </template>
 
 <script>
-import Alunos from "./components/Aluno/Alunos.vue";
+// import Alunos from "./components/Aluno/Alunos.vue";
+// import Professor from "./components/Professor/Professor.vue";
+// import Sobre from "./components/Sobre/Sobre";
+import Nav from "./components/_nav/Nav.vue";
 
 export default {
   name: "App",
   components: {
-    Alunos,
+    // Alunos,
+    // Professor,
+    // Sobre,
+    Nav,
   },
 };
 </script>
@@ -32,7 +44,13 @@ html {
   height: 100%;
 }
 
+.marginPrincipal {
+  width: 50%;
+  margin: auto;
+}
+
 #app {
+  width: 100%;
 }
 
 .btn_danger {

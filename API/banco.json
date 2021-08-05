@@ -1,14 +1,59 @@
 {
+
+  "professores":[
+    { 
+      "id": 1, "nome": "kiy" 
+    },
+    { 
+      "id": 2, "nome": "satar"
+     },
+    {
+       "id": 3, "nome": "diolo"
+     }
+  ],
+
+
+
   "alunos": [
     {
       "nome": "JVGomes",
       "sobrenome": "",
-      "id": 3
+      "id": 3,
+      "professor":{       
+          "id": 1, "nome": "Kiy" 
+      }
     },
     {
-      "nome": "JVGMartins",
+      "nome": "POZE DO RODO",
       "sobrenome": "",
-      "id": 4
+      "id": 4,
+      "professor":{       
+        "id": 2, "nome": "satar" 
+    }
+    },
+    {
+      "nome": "GABRIELA",
+      "sobrenome": "",
+      "id": 7,
+      "professor":{       
+        "id": 1, "nome": "Kiy" 
+    }
+    },
+    {
+      "nome": "CLEVIN",
+      "sobrenome": "",
+      "id": 9,
+      "professor":{       
+        "id": 3, "nome": "diolo" 
+    }
+    },
+    {
+      "nome": "Cici",
+      "sobrenome": "",
+      "id": 10,
+      "professor":{       
+        "id": 1, "nome": "Kiy" 
+    }
     }
   ]
 }

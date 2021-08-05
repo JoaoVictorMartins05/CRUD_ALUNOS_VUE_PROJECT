@@ -47,15 +47,23 @@ export default {
     return {
       titulo: "Aluno",
       nome: "",
+      professorid: this.$route.params.prof_id,
       alunos: [],
     };
   },
 
   created() {
-    this.$http
-      .get("http://localhost:3000/alunos")
-      .then((res) => res.json())
-      .then((alunos) => (this.alunos = alunos));
+    if (this.professorid) {
+      this.$http
+        .get("http://localhost:3000/alunos?professor.id=" + this.professorid)
+        .then((res) => res.json())
+        .then((alunos) => (this.alunos = alunos));
+    } else {
+      this.$http
+        .get("http://localhost:3000/alunos")
+        .then((res) => res.json())
+        .then((alunos) => (this.alunos = alunos));
+    }
   },
 
   props: {},
@@ -93,6 +101,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 input {
+  width: calc(100% - 195px);
   border: 0;
   padding: 20px;
   font-size: 1.3em;
@@ -102,7 +111,8 @@ input {
 }
 
 .btnInput {
-  margin-left: 4px;
+  width: 150px;
+  /* margin-left: 4px; */
   border: 0px;
   padding: 20px;
   font-size: 1.3em;
