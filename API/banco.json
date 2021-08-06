@@ -1,59 +1,81 @@
 {
-
-  "professores":[
-    { 
-      "id": 1, "nome": "kiy" 
-    },
-    { 
-      "id": 2, "nome": "satar"
-     },
+  "professores": [
     {
-       "id": 3, "nome": "diolo"
-     }
+      "id": 1,
+      "nome": "kiy"
+    },
+    {
+      "id": 2,
+      "nome": "satar"
+    },
+    {
+      "id": 3,
+      "nome": "diolo"
+    }
   ],
-
-
-
   "alunos": [
     {
       "nome": "JVGomes",
       "sobrenome": "",
       "id": 3,
-      "professor":{       
-          "id": 1, "nome": "Kiy" 
+      "professor": {
+        "id": 1,
+        "nome": "Kiy"
       }
     },
     {
       "nome": "POZE DO RODO",
       "sobrenome": "",
       "id": 4,
-      "professor":{       
-        "id": 2, "nome": "satar" 
-    }
+      "professor": {
+        "id": 2,
+        "nome": "satar"
+      }
     },
     {
       "nome": "GABRIELA",
       "sobrenome": "",
       "id": 7,
-      "professor":{       
-        "id": 1, "nome": "Kiy" 
-    }
+      "professor": {
+        "id": 1,
+        "nome": "Kiy"
+      }
     },
     {
       "nome": "CLEVIN",
       "sobrenome": "",
       "id": 9,
-      "professor":{       
-        "id": 3, "nome": "diolo" 
-    }
+      "professor": {
+        "id": 3,
+        "nome": "diolo"
+      }
     },
     {
       "nome": "Cici",
       "sobrenome": "",
       "id": 10,
-      "professor":{       
-        "id": 1, "nome": "Kiy" 
-    }
+      "professor": {
+        "id": 1,
+        "nome": "Kiy"
+      }
+    },
+    {
+      "nome": "cécilis",
+      "sobrenome": "",
+      "professor": {
+        "id": 3,
+        "nome": "diolo"
+      },
+      "id": 11
+    },
+    {
+      "nome": "MC Little Hair",
+      "sobrenome": "",
+      "professor": {
+        "id": 2,
+        "nome": "satar"
+      },
+      "id": 12
     }
   ]
 }
