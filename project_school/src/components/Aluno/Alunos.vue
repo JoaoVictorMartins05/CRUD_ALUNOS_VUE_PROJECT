@@ -1,6 +1,12 @@
 <template>
   <div>
-    <titulo :texto="professorid != undefined? 'Professor: '+ professor.nome: 'Todos os Alunos'" />
+    <titulo
+      :texto="
+        professorid != undefined
+          ? 'Professor: ' + professor.nome
+          : 'Todos os Alunos'
+      "
+    />
     <div v-if="professorid != undefined">
       <input
         type="text"
@@ -21,8 +27,14 @@
       <tbody v-if="alunos.length">
         <tr v-for="(aluno, index) in alunos" :key="index">
           <!-- <td>{{ index + 1 }}</td> -->
-          <td>{{ aluno.id }}</td>
-          <router-link :to="`/alunoDetalhe/${aluno.id}`" tag="td" style="cursor: pointer;"> 
+          <td class="colPequeno" style="text-align: center; width: 15%">
+            {{ aluno.id }}
+          </td>
+          <router-link
+            :to="`/alunoDetalhe/${aluno.id}`"
+            tag="td"
+            style="cursor: pointer"
+          >
             {{ aluno.nome }} {{ aluno.sobrenome }}
           </router-link>
           <td>
@@ -105,7 +117,7 @@ export default {
 
     carregarProfessores() {
       this.$http
-        .get("http://localhost:3000/professores/"+this.professorid)
+        .get("http://localhost:3000/professores/" + this.professorid)
         .then((res) => res.json())
         .then((professor) => {
           this.professor = professor;

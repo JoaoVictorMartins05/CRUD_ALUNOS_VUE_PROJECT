@@ -1,6 +1,10 @@
 <template>
   <div>
-    <titulo :texto="'Aluno: ' + aluno.nome" />
+    <titulo :texto="'Aluno: ' + aluno.nome" :btnVoltar="!visualizando">
+      <button v-show="visualizando" class="btn btnEditar" @click="editar()">
+        Editar
+      </button>
+    </titulo>
     <table>
       <tbody>
         <tr>
@@ -10,35 +14,50 @@
           </td>
         </tr>
         <tr>
-          <td>Nome</td>
+          <td class="colPequeno">Nome</td>
           <td>
-            <label>{{ aluno.nome }}</label>
-            <input v-model="aluno.nome" type="text"/>
+            <label v-if="visualizando">{{ aluno.nome }}</label>
+            <input v-else v-model="aluno.nome" type="text" />
           </td>
         </tr>
         <tr>
-          <td>Sobrenome</td>
+          <td class="colPequeno">Sobrenome</td>
           <td>
-            <label>{{ aluno.sobrenome }}</label>
-            <input v-model="aluno.sobrenome" type="text"/>
+            <label v-if="visualizando">{{ aluno.sobrenome }}</label>
+            <input v-else v-model="aluno.sobrenome" type="text" />
           </td>
         </tr>
         <tr>
-          <td>Data Nascimento</td>
+          <td class="colPequeno">Data Nascimento</td>
           <td>
-            <label>{{ aluno.dataNasc }}</label>
-            <input v-model="aluno.dataNasc" type="text"/>
+            <label v-if="visualizando">{{ aluno.dataNasc }}</label>
+            <input v-else v-model="aluno.dataNasc" type="text" />
           </td>
         </tr>
         <tr>
-          <td>Professor</td>
+          <td class="colPequeno">Professor</td>
           <td>
-            <label>{{ aluno.professor.nome }}</label>
-            <input v-model="aluno.professor.nome" type="text"/>
+            <label v-if="visualizando">{{ aluno.professor.nome }}</label>
+            <select v-else v-model="aluno.professor">
+              <option
+                v-for="(professor, index) in professores"
+                :key="index"
+                v-bind:value="professor"
+              >
+                {{ professor.nome }}
+              </option>
+            </select>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <div style="margin-top: 10px">
+      <div v-if="!visualizando">
+        <button class="btn btnSalvar" @click="salvar(aluno)">Salvar</button>
+        <button class="btn btnCancelar" @click="cancelar()">Cancelar</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -53,8 +72,9 @@ export default {
   data() {
     return {
       aluno: {},
-
+      professores: [],
       idAluno: this.$route.params.id,
+      visualizando: true,
     };
   },
 
@@ -62,12 +82,78 @@ export default {
     this.$http
       .get("http://localhost:3000/alunos/" + this.idAluno)
       .then((res) => res.json())
-      .then((aluno) => (this.aluno = aluno));
+      .then((alunoReturn) => (this.aluno = alunoReturn));
+
+    this.$http
+      .get("http://localhost:3000/professores")
+      .then((res) => res.json())
+      .then((professor) => {
+        this.professores = professor;
+      });
   },
 
-  methods: {},
+  methods: {
+    editar() {
+      this.visualizando = !this.visualizando;
+    },
+
+    salvar(_aluno) {
+      let _alunoEditar = {
+        id: _aluno.id,
+        nome: _aluno.nome,
+        sobrenome: _aluno.sobrenome,
+        dataNasc: _aluno.dataNasc,
+        professor: _aluno.professor,
+      };
+
+      this.$http.put(
+        `http://localhost:3000/alunos/${_alunoEditar.id}`,
+        _alunoEditar
+      );
+      this.visualizando = !this.visualizando;
+    },
+
+    cancelar() {
+      this.visualizando = !this.visualizando;
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.btnSalvar {
+  float: right;
+  background-color: rgb(79, 196, 68);
+}
+
+.btnCancelar {
+  float: left;
+  background-color: rgb(249, 186, 92);
+}
+
+.btnEditar {
+  float: right;
+  background-color: rgb(76, 186, 249);
+}
+
+.colPequeno {
+  width: 20%;
+}
+
+input,
+select {
+  margin: 0px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  font-family: Montserrat;
+  border-radius: 5px;
+  border: 1px solid silver;
+  width: 95%;
+  background-color: rgb(245, 245, 245);
+}
+
+select {
+  height: 38px;
+  width: 103%;
+}
 </style>

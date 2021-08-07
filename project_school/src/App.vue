@@ -54,6 +54,7 @@ html {
 }
 
 .btn_danger {
+  font-size: 0.8em !important;
   background-color: #fa4430;
 }
 
@@ -61,10 +62,12 @@ html {
   padding: 10px 20px;
   cursor: pointer;
   border: 1px solid black;
+  font-size: 1.2em;
   color: white;
   font-weight: bold;
   border-radius: 5px;
   border-bottom: 3px solid black;
+  font-size: 1.3em;
 }
 
 .btn:hover {
@@ -97,5 +100,8 @@ table thead th {
 
 .colPequeno {
   width: 5%;
+  text-align: right;
+  background-color: rgb(125, 217, 245);
+  font-weight: bold;
 }
 </style>

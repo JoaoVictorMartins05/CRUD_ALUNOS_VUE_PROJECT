@@ -10,7 +10,9 @@
       <tbody v-if="professores.length">
         <tr v-for="(professor, index) in professores" :key="index">
           <!-- <td>{{ index + 1 }}</td> -->
-          <td>{{ professor.id }}</td>
+          <td class="colPequeno" style="text-align: center; width: 15%">
+            {{ professor.id }}
+          </td>
 
           <router-link
             v-bind:to="'/alunos/' + professor.id"
@@ -20,7 +22,9 @@
             {{ professor.nome }} {{ professor.sobrenome }}
           </router-link>
 
-          <td>{{ professor.qtdAlunos }}</td>
+          <td class="colPequeno" style="text-align: center; width: 20%">
+            {{ professor.qtdAlunos }}
+          </td>
         </tr>
       </tbody>
       <tfoot v-else>

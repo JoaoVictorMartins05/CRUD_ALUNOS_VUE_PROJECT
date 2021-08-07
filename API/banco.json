@@ -15,12 +15,13 @@
   ],
   "alunos": [
     {
-      "nome": "JVGomes",
-      "sobrenome": "",
       "id": 3,
+      "nome": "Joao V",
+      "sobrenome": "Martins",
+      "dataNasc": "05/10/1999",
       "professor": {
         "id": 1,
-        "nome": "Kiy"
+        "nome": "kiy"
       }
     },
     {
