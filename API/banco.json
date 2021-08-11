@@ -16,7 +16,7 @@
   "alunos": [
     {
       "id": 3,
-      "nome": "Joao V",
+      "nome": "Joao Victor",
       "sobrenome": "Martins",
       "dataNasc": "05/10/1999",
       "professor": {
@@ -49,15 +49,6 @@
       "professor": {
         "id": 3,
         "nome": "diolo"
-      }
-    },
-    {
-      "nome": "Cici",
-      "sobrenome": "",
-      "id": 10,
-      "professor": {
-        "id": 1,
-        "nome": "Kiy"
       }
     },
     {
