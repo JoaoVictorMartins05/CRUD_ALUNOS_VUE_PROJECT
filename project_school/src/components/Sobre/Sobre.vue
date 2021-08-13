@@ -1,6 +1,6 @@
 <template>
   <div>
-    <titulo texto="Sobre" />
+    <titulo texto="Sobre" :btnVoltar="true" />
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint possimus,
       facere molestiae qui veniam error blanditiis esse aspernatur corporis in,

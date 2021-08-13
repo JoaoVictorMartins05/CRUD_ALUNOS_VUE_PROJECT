@@ -46,12 +46,12 @@ namespace ProjectSchool_API.Data
         query = query.Include(a => a.Professor);
       }
 
-      query.AsNoTracking().OrderBy(a => a.Id);
+      query = query.AsNoTracking().OrderBy(a => a.Id);
 
       return await query.ToArrayAsync();
     }
 
-    public async Task<Aluno[]> GetAlunosAsyncByProfessorId(int professorID, bool includeProfessor)
+    public async Task<Aluno[]> GetAlunosAsyncByProfessorId(int ProfessorID, bool includeProfessor)
     {
       IQueryable<Aluno> query = _context.Alunos;
 
@@ -60,7 +60,8 @@ namespace ProjectSchool_API.Data
         query = query.Include(a => a.Professor);
       }
 
-      query.AsNoTracking().OrderBy(a => a.Id).Where(aluno => aluno.ProfessorId == professorID);
+      query = query.AsNoTracking()
+            .OrderBy(a => a.Id).Where(aluno => aluno.ProfessorId == ProfessorID);
 
       return await query.ToArrayAsync();
     }
@@ -74,7 +75,7 @@ namespace ProjectSchool_API.Data
         query = query.Include(a => a.Professor);
       }
 
-      query.AsNoTracking().OrderBy(a => a.Id).Where(aluno => aluno.Id == AlunoID);
+      query = query.AsNoTracking().OrderBy(a => a.Id).Where(aluno => aluno.Id == AlunoID);
 
       return await query.FirstOrDefaultAsync();
     }
@@ -90,7 +91,7 @@ namespace ProjectSchool_API.Data
         query = query.Include(a => a.Alunos);
       }
 
-      query.AsNoTracking().OrderBy(a => a.Id);
+      query = query.AsNoTracking().OrderBy(a => a.Id);
 
       return await query.ToArrayAsync();
     }
@@ -104,7 +105,7 @@ namespace ProjectSchool_API.Data
         query = query.Include(a => a.Alunos);
       }
 
-      query.AsNoTracking().OrderBy(a => a.Id).Where(professor => professor.Id == ProfessorId);
+      query = query.AsNoTracking().OrderBy(a => a.Id).Where(professor => professor.Id == ProfessorId);
 
       return await query.FirstOrDefaultAsync();
     }
