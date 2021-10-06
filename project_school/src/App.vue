@@ -104,4 +104,11 @@ table thead th {
   background-color: rgb(125, 217, 245);
   font-weight: bold;
 }
+
+.imagemDetalhe {
+  width: 100%;
+  height: 500px;
+  margin: 0px;
+  padding: 0px;
+}
 </style>

@@ -25,5 +25,10 @@ namespace ProjectSchool_API.Data
     Task<Professor[]> GetAllProfessoresAsync(bool includeAluno);
     Task<Professor> GetProfessorAsyncById(int AlunoID, bool includeAluno);
 
+    //verificarSeCpfJáExiste
+    bool ifExistCpf(string cpf);
+
+    //bool verificaCpf(string cpf);
+
   }
 }

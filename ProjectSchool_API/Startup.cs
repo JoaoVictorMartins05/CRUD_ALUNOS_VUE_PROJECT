@@ -28,7 +28,7 @@ namespace ProjectSchool_API
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<DataContext>(
-          x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
+          x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
       );
       services.AddControllers()
       .AddNewtonsoftJson(options =>

@@ -96,6 +96,8 @@ export default {
         sobrenome: "",
         dataNasc: "",
         professorid: this.professor.id,
+        cpf: "",
+        arquivo: "",
       };
 
       this.$http

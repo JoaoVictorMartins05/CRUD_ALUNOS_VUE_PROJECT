@@ -8,6 +8,10 @@ namespace ProjectSchool_API.Models
 
     public string Nome { get; set; }
 
+    public string cpf { get; set; }
+
     public List<Aluno> Alunos { get; set; }
+
+    public string arquivo { get; set; }
   }
 }

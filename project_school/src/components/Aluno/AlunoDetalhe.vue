@@ -35,6 +35,21 @@
           </td>
         </tr>
         <tr>
+          <td class="colPequeno">CPF</td>
+          <td>
+            <label v-if="visualizando">{{ cpfFormatado }}</label>
+            <input v-else v-model="cpfFormatado" type="text" />
+          </td>
+        </tr>
+
+        <tr v-if="!visualizando">
+          <td class="colPequeno">Imagem</td>
+          <td>
+            <input type="file" accept="image/jpeg" ref="files" />
+            <button v-on:click="upload()">Upload</button>
+          </td>
+        </tr>
+        <tr>
           <td class="colPequeno">Professor</td>
           <td>
             <label v-if="visualizando">{{ aluno.professor.nome }}</label>
@@ -52,6 +67,8 @@
       </tbody>
     </table>
 
+    <img class="imagemDetalhe" v-bind:src="this.image" alt="Imagem" />
+
     <div style="margin-top: 10px">
       <div v-if="!visualizando">
         <button class="btn btnSalvar" @click="salvar(aluno)">Salvar</button>
@@ -61,8 +78,10 @@
   </div>
 </template>
 
+
 <script>
 import Titulo from "../_share/Titulo.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -71,10 +90,13 @@ export default {
 
   data() {
     return {
-      aluno: {},
+      aluno: { nome: undefined },
+      image: "",
+      cpfFormatado: "",
       professores: [],
       idAluno: this.$route.params.id,
       visualizando: true,
+      file: {},
     };
   },
 
@@ -99,7 +121,58 @@ export default {
         .then((res) => res.json())
         .then((aluno) => {
           this.aluno = aluno;
+          this.formatarCpf(this.aluno.cpf);
           this.loading = false;
+          this.image = `http://localhost:5000/api/aluno/picture/${this.aluno.arquivo}`;
+        });
+    },
+
+    formatarCpf(cpf) {
+      let stringAux = cpf;
+      this.cpfFormatado =
+        stringAux.substr(0, 3) +
+        "." +
+        stringAux.substr(3, 3) +
+        "." +
+        stringAux.substr(6, 3) +
+        "-" +
+        stringAux.substr(9, 2);
+      console.log(this.cpfFormatado);
+    },
+
+    upload() {
+      console.log("olaaaa");
+      var dataForm = new FormData();
+      var str = this.aluno.arquivo;
+
+      console.log(this.$refs.files.files);
+
+      if (this.$refs.files.files.length == 0) {
+        alert("Upload Failed");
+        location.reload();
+      }
+
+      for (let file of this.$refs.files.files) {
+        dataForm.append(`file`, file, str);
+      }
+
+      console.log(dataForm);
+
+      axios
+        .post("http://localhost:5000/api/aluno/upload", dataForm, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log("Upload da Imagem: " + res.statusText);
+          if (res.status == 200) {
+            this.image = `http://localhost:5000/api/aluno/picture/${this.aluno.arquivo}`;
+            alert("Upload Sucess");
+            location.reload();
+          } else {
+            alert("Upload Failed");
+          }
         });
     },
 
@@ -107,21 +180,60 @@ export default {
       this.visualizando = !this.visualizando;
     },
 
+    cpfParaBD(cpf) {
+      let stringAux = cpf;
+
+      if (cpf.length == 14) {
+        this.aluno.cpf =
+          stringAux.substr(0, 3) +
+          stringAux.substr(4, 3) +
+          stringAux.substr(8, 3) +
+          stringAux.substr(12, 2);
+        console.log(this.aluno.cpf);
+      } else {
+        this.aluno.cpf = cpf;
+      }
+    },
+
     salvar(_aluno) {
+      this.cpfParaBD(this.cpfFormatado);
+
       let _alunoEditar = {
         id: _aluno.id,
         nome: _aluno.nome,
         sobrenome: _aluno.sobrenome,
         dataNasc: _aluno.dataNasc,
+        cpf: this.aluno.cpf,
         professorid: _aluno.professor.id,
       };
 
-      this.$http
-        .put(`http://localhost:5000/api/aluno/${_alunoEditar.id}`, _alunoEditar)
-        .then((res) => res.json())
-        .then((aluno) => (this.aluno = aluno))
-        .then(() => (this.visualizando = true));
-      this.visualizando = !this.visualizando;
+      if (_aluno.cpf == "") {
+        console.log("ERRO: CPF IS NULL");
+        alert("Campo CPF vazio! Por Favor, preencha o CPF");
+      } else {
+        this.$http
+          .put(
+            `http://localhost:5000/api/aluno/${_alunoEditar.id}`,
+            _alunoEditar
+          )
+          .then((res) => {
+            res
+              .json()
+              .then((aluno) => {
+                this.aluno = aluno;
+                this.formatarCpf(this.aluno.cpf);
+              })
+              .then(() => (this.visualizando = true));
+            console.log("CPF ACEITO");
+          })
+          .catch((error) => {
+            console.log(error.data);
+            alert(error.data);
+            this.visualizando = !this.visualizando;
+          });
+
+        this.visualizando = !this.visualizando;
+      }
     },
 
     cancelar() {

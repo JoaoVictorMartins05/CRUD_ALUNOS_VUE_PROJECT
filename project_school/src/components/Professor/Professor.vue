@@ -35,6 +35,8 @@
         </tr>
       </tfoot>
     </table>
+
+    <img class="imagemDetalhe" :src="this.image" alt="Imagem" />
   </div>
 </template>
 
@@ -48,6 +50,7 @@ export default {
       titulo: "Professores",
       professores: [],
       alunos: [],
+      image: "",
     };
   },
   created() {
@@ -57,6 +60,7 @@ export default {
       .then((alunos) => {
         this.alunos = alunos;
         this.carregarProfessores();
+        this.image = `http://localhost:5000/api/professor/picture/0`;
       });
   },
 

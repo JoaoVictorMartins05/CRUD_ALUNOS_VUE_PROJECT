@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -109,5 +110,38 @@ namespace ProjectSchool_API.Data
 
       return await query.FirstOrDefaultAsync();
     }
+
+    bool IRepository.ifExistCpf(string cpf)
+    {
+      IQueryable<Aluno> queryAluno = _context.Alunos;
+      IQueryable<Professor> queryProfessor = _context.Professores;
+
+      queryAluno = queryAluno.AsNoTracking().OrderBy(a => a.Id);
+      queryProfessor = queryProfessor.AsNoTracking().OrderBy(a => a.Id);
+
+      foreach (Aluno a in queryAluno.ToArray())
+      {
+        Console.WriteLine(a.cpf + " e " + cpf);
+        if (a.cpf == cpf)
+        {
+          return false;
+        }
+      }
+
+      foreach (Professor p in queryProfessor.ToArray())
+      {
+        if (p.cpf == cpf)
+        {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    // bool IRepository.verificaCpf(string cpf)
+    // {
+    //   throw new System.NotImplementedException();
+    // }
   }
 }

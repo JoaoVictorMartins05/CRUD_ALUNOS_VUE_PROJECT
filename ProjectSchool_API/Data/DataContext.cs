@@ -7,8 +7,8 @@ namespace ProjectSchool_API.Data
 {
   public class DataContext : DbContext
   {
-    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
-
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    { }
     public DbSet<Aluno> Alunos { get; set; }
     public DbSet<Professor> Professores { get; set; }
 
@@ -18,16 +18,9 @@ namespace ProjectSchool_API.Data
           new List<Professor>(){
                 new Professor(){
                     Id=1,
-                    Nome= "Marcelo Deux"
-                },
-                new Professor(){
-                    Id=2,
-                    Nome= "Rodrigo Robozão"
-                },
-                new Professor(){
-                    Id=3,
-                    Nome= "Ze Ruim"
-                },
+                    Nome= "Kakashi Hatake",
+                    cpf= "47634928020"
+                }
           }
       );
 
@@ -35,28 +28,31 @@ namespace ProjectSchool_API.Data
         new List<Aluno>(){
                 new Aluno(){
                     Id=1,
-                    Nome= "João",
-                    Sobrenome="Martins",
+                    Nome= "Naruto",
+                    Sobrenome="Uzumaki",
                     DataNasc="05/10/1999",
+                    cpf= "99261356095",
+                    arquivo = "./Resources/naruto.jpg",
                     ProfessorId=1
                 },
                 new Aluno(){
                     Id=2,
-                    Nome= "Gabi",
-                    Sobrenome="Gabry",
+                    Nome= "Sakura",
+                    Sobrenome="Haruno",
                     DataNasc="20/01/2000",
-                    ProfessorId=2
+                    cpf="47293417080",
+                    ProfessorId=1
                 },
                 new Aluno(){
                     Id=3,
-                    Nome= "Carlim",
-                    Sobrenome="Carvalho",
+                    Nome= "Sasuke",
+                    Sobrenome="Uchiha",
                     DataNasc="01/01/1345",
-                    ProfessorId=3
+                    cpf = "68439389060",
+                    ProfessorId=1
                 },
         }
     );
-
 
 
     }

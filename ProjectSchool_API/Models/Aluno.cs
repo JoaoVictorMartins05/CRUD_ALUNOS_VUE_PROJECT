@@ -7,6 +7,8 @@ namespace ProjectSchool_API.Models
     public string Sobrenome { get; set; }
     public string DataNasc { get; set; }
     public int ProfessorId { get; set; }
+    public string cpf { get; set; }
+    public string arquivo { get; set; }
 
     public Professor Professor { get; set; }
   }
