@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XQZFlhA4rOKewcmMwkiv3vc5UyzlQKE3XgOOhm3EZKi/yF+r6pLTAinfRwiyUAXtAnZhn4mExFoAXTliBb4w3g==",
+  "dgSpecHash": "7OwwJ2yY97TYHVbjoONP5jiLV4m/f8gf9c0DyqkjZwXFb5cZf2rY/v+FONoSVXnR32P6JEh//jyRAtqMbdtfoA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj",
+  "projectFilePath": "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\jow\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\joaov\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.1\\microsoft.aspnetcore.jsonpatch.3.1.1.nupkg.sha512",
     "C:\\Users\\joaov\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.1\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.1.nupkg.sha512",

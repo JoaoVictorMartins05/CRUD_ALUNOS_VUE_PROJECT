@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj": {}
+    "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\jow\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj": {
+    "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\jow\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj",
+        "projectUniqueName": "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\jow\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj",
         "projectName": "ProjectSchool_API",
-        "projectPath": "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj",
+        "projectPath": "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\jow\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\ProjectSchool_API.csproj",
         "packagesPath": "C:\\Users\\joaov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\obj\\",
+        "outputPath": "C:\\Users\\joaov\\OneDrive\\Área de Trabalho\\jow\\curso Vue JS\\tarefa02_naruto\\VUE_PROJECT\\ProjectSchool_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joaov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -75,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
